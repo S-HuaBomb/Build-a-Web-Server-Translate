@@ -3,7 +3,7 @@
 
 <p align="center">
   <a href='https://blog.csdn.net/Run_Bomb/article/details/96710139'><img src ="https://img.shields.io/badge/CSDN-翻译 from Ruslan's Blog-success.svg" alt='徽章' title="CSDN"></a>
-  <a href='https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md'><img src ="https://img.shields.io/badge/GitHub-Let's Build A Web Server!-important.svg" alt='徽章' title="Github"></a>
+  <a href='https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/README.md'><img src ="https://img.shields.io/badge/GitHub-Let's Build A Web Server!-important.svg" alt='徽章' title="Github"></a>
 </p>
 
 ----
