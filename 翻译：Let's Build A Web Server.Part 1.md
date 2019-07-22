@@ -109,7 +109,7 @@ HTTP 请求包含指明 HTTP 方法的行（**GET**，因为我们要求我们�
 
 这里有一个问题：“如何在新创建的 Web 服务器下运行 Django 应用程序，Flask 应用程序和Pyramid 应用程序，而无需对服务器进行单一更改以适应所有这些不同的 Web 框架？”
 
-我将在本系列的 [Part 2]() 中向您展示如何去做。敬请关注。
+我将在本系列的 [Part 2](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%202.md) 中向您展示如何去做。敬请关注。
 
 用于准备本文的资源（链接是代理链接）：
 1. [Unix Network Programming, Volume 1: The Sockets Networking API (3rd Edition)](https://www.amazon.com/gp/product/0131411551/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0131411551&linkCode=as2&tag=russblo0b-20&linkId=2F4NYRBND566JJQL)
@@ -122,8 +122,8 @@ HTTP 请求包含指明 HTTP 方法的行（**GET**，因为我们要求我们�
 > * Added resources used in preparation for the article
 
 **此系列的所有文章（已翻译）：**
-* [Let’s Build A Web Server. Part 1.]()
-* [Let’s Build A Web Server. Part 2.]()
+* [Let’s Build A Web Server. Part 1.](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md)
+* [Let’s Build A Web Server. Part 2.](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%202.md)
 * [Let’s Build A Web Server. Part 3.]()
 ***
 >看得出来 Ruslan 对中国谚语是感兴趣的，我们可以去他博客的自我介绍（[About-Ruslan's Blog](https://ruslanspivak.com/pages/about/)）认识他：
