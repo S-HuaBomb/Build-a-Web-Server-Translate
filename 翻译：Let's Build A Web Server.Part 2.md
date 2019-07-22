@@ -386,7 +386,7 @@ Web 框架使用来自该字典的信息来决定指定的路由、请求方法�
 
 在你继续之前，这是另一个你可以考虑一下的问题：“你如何让你的服务器一次处理多个请求？”
 
-请继续关注，我将在 [Part 3]() 中向你展示完成它的一种方法。Cheers！
+请继续关注，我将在 [Part 3](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%203.md) 中向你展示完成它的一种方法。Cheers！
 
 >**UPDATE: Mon, July 15, 2019**
 > * Updated the server code to run under Python 3.7+
@@ -395,4 +395,4 @@ Web 框架使用来自该字典的信息来决定指定的路由、请求方法�
 **此系列的所有文章（已翻译）：**
 * [Let’s Build A Web Server. Part 1.](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md)
 * [Let’s Build A Web Server. Part 2.](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%202.md)
-* [Let’s Build A Web Server. Part 3.]()
+* [Let’s Build A Web Server. Part 3.](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%203.md)
