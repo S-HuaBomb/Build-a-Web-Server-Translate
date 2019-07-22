@@ -1,6 +1,6 @@
 ﻿原文：《[Let’s Build A Web Server. Part 2.](https://ruslanspivak.com/lsbaws-part2/)》
 ***
-还记得，在 [Part 1](https://blog.csdn.net/Run_Bomb/article/details/96710139) 中，我问了一个问题：“如何在新创建的 Web 服务器下运行 Django 应用程序，Flask 应用程序和 Pyramid 应用程序，而无需对服务器进行单一更改以适应所有这些不同的Web框架？”， 继续阅读，找出答案。
+还记得，在 [Part 1](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md) 中，我问了一个问题：“如何在新创建的 Web 服务器下运行 Django 应用程序，Flask 应用程序和 Pyramid 应用程序，而无需对服务器进行单一更改以适应所有这些不同的Web框架？”， 继续阅读，找出答案。
 
 过去，你选择的 Python Web 框架会限制你对可用 Web 服务器的选择，反之亦然。 如果框架和服务器设计为一起工作，那么没有任何问题：
 ![lsbaws_part2_before_wsgi](https://img-blog.csdnimg.cn/20190721153452334.png)
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     print(f'WSGIServer: Serving HTTP on port {PORT} ...\n')
     httpd.serve_forever()
 ```
-它肯定比 [Part 1](https://blog.csdn.net/Run_Bomb/article/details/96710139) 中的服务器代码更大，但它也足够小（不到150行），你可以理解而不会被细节困扰。上面的服务器也能做到更多——它可以运行用你心爱的 Web 框架编写的基本 Web 应用程序，无论是 Pyramid，Flask，Django 还是其他一些 Python WSGI 框架。
+它肯定比 [Part 1](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md) 中的服务器代码更大，但它也足够小（不到150行），你可以理解而不会被细节困扰。上面的服务器也能做到更多——它可以运行用你心爱的 Web 框架编写的基本 Web 应用程序，无论是 Pyramid，Flask，Django 还是其他一些 Python WSGI 框架。
 
 不相信我？试一试，亲身体会吧。 将上述代码保存为 `webserver2.py` 或直接从 [GitHub](https://github.com/rspivak/lsbaws/blob/master/part2/webserver2.py) 下载。 如果你试图在没有任何参数的情况下运行它，它会报错并退出。
 ```
@@ -362,7 +362,7 @@ WSGIServer: Serving HTTP on port 8888 ...
 现在，让我们回到服务器传输给客户端的内容。 以下是使用 HTTP 客户端调用 Pyramid 应用程序时服务器生成的 HTTP 响应：
 ![lsbaws_part2_http_response](https://img-blog.csdnimg.cn/20190721211208398.png)
 
-响应中有一些你在 [Part 1](https://blog.csdn.net/Run_Bomb/article/details/96710139) 中看到的熟悉部分，但它也有一些新的东西。例如，它有四个你以前没有见过的 HTTP 标头：*Content-Type，Content-Length，Date* 和 *Server*。 这些是来自 Web 服务器的响应通常应该具有的标头。但是，没有一个是严格要求的。标头的目的是传输有关 HTTP 请求 / 响应的其他信息。
+响应中有一些你在 [Part 1](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md) 中看到的熟悉部分，但它也有一些新的东西。例如，它有四个你以前没有见过的 HTTP 标头：*Content-Type，Content-Length，Date* 和 *Server*。 这些是来自 Web 服务器的响应通常应该具有的标头。但是，没有一个是严格要求的。标头的目的是传输有关 HTTP 请求 / 响应的其他信息。
 
 现在你已经了解了有关 WSGI 接口的更多信息，以下是同样的 HTTP 响应，其中包含有关生成它的部件的更多信息：
 ![lsbaws_part2_http_response_explanation](https://img-blog.csdnimg.cn/20190721212122891.png)
@@ -393,6 +393,6 @@ Web 框架使用来自该字典的信息来决定指定的路由、请求方法�
 > * Added resources used in preparation for the article
 
 **此系列的所有文章（已翻译）：**
-* [Let’s Build A Web Server. Part 1.](https://blog.csdn.net/Run_Bomb/article/details/96710139)
-* [Let’s Build A Web Server. Part 2.](https://blog.csdn.net/Run_Bomb/article/details/96726186)
+* [Let’s Build A Web Server. Part 1.](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md)
+* [Let’s Build A Web Server. Part 2.](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%202.md)
 * [Let’s Build A Web Server. Part 3.]()
