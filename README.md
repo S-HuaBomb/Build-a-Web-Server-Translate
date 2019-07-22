@@ -12,6 +12,6 @@
 
 * [Let's Build A Web Server.Part 1.](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md)
 * [Let's build A Web Server.Part 2.](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%202.md)
-* [Let's build A Web Server.Part 2.]()【待完成...】
+* [Let's build A Web Server.Part 3.]()【待完成...】
 
 感兴趣的同学也可以到[我的 CSDN 博客](https://blog.csdn.net/Run_Bomb/article/details/96710139)中阅读
