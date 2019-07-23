@@ -1,6 +1,8 @@
-﻿原文：《[Let’s Build A Web Server. Part 2.](https://ruslanspivak.com/lsbaws-part2/)》
+:books: :books: :books:
+
+原文：《[Let’s Build A Web Server. Part 2.](https://ruslanspivak.com/lsbaws-part2/)》
 ***
-还记得，在 [Part 1](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md) 中，我问了一个问题：“如何在新创建的 Web 服务器下运行 Django 应用程序，Flask 应用程序和 Pyramid 应用程序，而无需对服务器进行单一更改以适应所有这些不同的Web框架？”， 继续阅读，找出答案。
+还记得，在 [Part 1](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md) 中，我问了一个问题：“如何在新创建的 Web 服务器下运行 Django 应用程序，Flask 应用程序和 Pyramid 应用程序，而无需对服务器进行单一更改以适应所有这些不同的 Web 框架？”， 继续阅读，找出答案。
 
 过去，你选择的 Python Web 框架会限制你对可用 Web 服务器的选择，反之亦然。 如果框架和服务器设计为一起工作，那么没有任何问题：
 ![lsbaws_part2_before_wsgi](https://img-blog.csdnimg.cn/20190721153452334.png)
@@ -10,17 +12,17 @@
 
 基本上你必须使用一起工作的服务器和框架，而不是你可能想要使用的那个。
 
-那么，你如何确保可以运行具有多个 Web 框架的 Web 服务器，而无需对 Web 服务器或 Web 框架进行代码更改？而这个问题的答案就在于 Python Web 服务器网关接口（简称WSGI，发音为“wizgy”）。
+那么，你如何确保可以运行具有多个 Web 框架的 Web 服务器，而无需对 Web 服务器或 Web 框架进行代码更改？而这个问题的答案就在于 **Python Web Server Gateway Interface**（服务器网关接口，简称WSGI，发音为“wizgy”）。
 ![lsbaws_part2_wsgi_idea](https://img-blog.csdnimg.cn/20190721154420414.png)
 
-WSGI 允许开发人员将 Web 框架的选择与 Web 服务器的选择分开。现在，你可以放心地混合和匹配 Web 服务器和 Web 框架，并选择适合你需求的配对。例如，你可以使用 Gunicorn 或 Nginx / uWSGI 或 Waitress 来运行 Django，Flask 或 Pyramid。 真正的混合和匹配，得益于服务器和框架中的 WSGI 支持：
+WSGI 允许开发人员将 Web 框架的选择与 Web 服务器的选择分开。现在，你可以放心地混搭 Web 服务器和 Web 框架，并选择适合你需要的配对。例如，你可以使用 Gunicorn 或 Nginx / uWSGI 或 Waitress 来运行 Django，Flask 或 Pyramid。 真正的混搭，得益于服务器和框架中的 WSGI 支持：
 ![lsbaws_part2_wsgi_interop](https://img-blog.csdnimg.cn/20190721155538694.png)
 
-因此，WSGI 是我在 [Part 1](https://blog.csdn.net/Run_Bomb/article/details/96710139) 末尾向你提出并在本文开头重复的问题的答案。 你的 Web 服务器必须实现 WSGI 接口的服务器部分，并且所有现代 Python Web 框架都已实现了 WSGI 接口的框架端，这允许你将这些框架与 Web 服务器一起使用，而无需修改服务器的代码去适应特定的 Web 框架。
+因此，WSGI 是我在 [Part 1](https://blog.csdn.net/Run_Bomb/article/details/96710139) 末尾向你提出以及在本文开头重复的问题的答案。你的 Web 服务器必须实现 WSGI 接口的服务器部分，并且所有现代 Python Web 框架都已实现了 WSGI 接口的框架端，这才允许你将这些框架与 Web 服务器混搭使用，而无需修改服务器的代码去适应特定的 Web 框架。
 
 现在你知道 Web 服务器和 Web 框架的 WSGI 支持允许你选择适合你的配对，它同时对服务器和框架开发人员也是有益的，因为他们可以专注于他们擅长的专业领域而不是彼此手忙脚乱。其他语言也有类似的接口：例如，Java 有 Servlet API，Ruby 有 Rack。
 
-现在自我感觉良好，但我打赌你会说：“Show me the code!”。好的，看看这个非常简约的 WSGI 服务器实现：
+现在我自我感觉良好，但我打赌你会说：“Show me the code!”。好的，看看这个非常简约的 WSGI 服务器实现：
 ```python
 # 使用 Python 3.7+ 测试通过 (Mac OS X)
 import io
@@ -67,7 +69,7 @@ class WSGIServer(object):
     def handle_one_request(self):
         request_data = self.client_connection.recv(1024)
         self.request_data = request_data = request_data.decode('utf-8')
-        # 打印格式化后的请求数据
+        # 打印格式化后的‘curl -v’请求数据
         print(''.join(
             f'< {line}\n' for line in request_data.splitlines()
         ))
@@ -131,7 +133,7 @@ class WSGIServer(object):
             response += '\r\n'
             for data in result:
                 response += data.decode('utf-8')
-            # 依照 'Ctrl -v' 打印格式化后的响应数据
+            # 依照 ‘curl -v’ 打印格式化后的响应数据
             print(''.join(
                 f'> {line}\n' for line in response.splitlines()
             ))
@@ -161,14 +163,14 @@ if __name__ == '__main__':
     print(f'WSGIServer: Serving HTTP on port {PORT} ...\n')
     httpd.serve_forever()
 ```
-它肯定比 [Part 1](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md) 中的服务器代码更大，但它也足够小（不到150行），你可以理解而不会被细节困扰。上面的服务器也能做到更多——它可以运行用你心爱的 Web 框架编写的基本 Web 应用程序，无论是 Pyramid，Flask，Django 还是其他一些 Python WSGI 框架。
+它肯定比 [Part 1](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%201.md) 中的服务器代码更多，但它也足够小（不到150行），你依然可以理解而不会被细节困扰。上面的服务器也能做到更多——它可以运行你心爱的 Web 框架编写的基本 Web 应用程序，无论是 Pyramid，Flask，Django 还是其他一些 Python WSGI 框架。
 
-不相信我？试一试，亲身体会吧。 将上述代码保存为 `webserver2.py` 或直接从 [GitHub](https://github.com/rspivak/lsbaws/blob/master/part2/webserver2.py) 下载。 如果你试图在没有任何参数的情况下运行它，它会报错并退出。
+不相信我？试一试，亲身体会吧。将上述代码保存为 `webserver2.py` 或直接从 [GitHub](https://github.com/rspivak/lsbaws/blob/master/part2/webserver2.py) 下载。如果你试图在没有任何参数的情况下运行它，它会报错并退出。
 ```
 $ python webserver2.py
 Provide a WSGI application object as module:callable
 ```
-它迫切地的想要为你的 Web 应用程序提供服务，这样才会变得有趣。要运行服务器，你唯一需要安装的就是 Python（确切地说是Python 3.7+）。 但要运行使用 Pyramid，Flask 和 Django 编写的应用程序，你需要先安装这些框架。让我们安装所有这三个。我首选的方法是使用 venv（默认情况下在Python 3.3及更高版本中可用）。只需按照以下步骤创建并激活虚拟环境，然后安装这三个 Web 框架。
+它迫切地的想要为你的 Web 应用程序提供服务，这样才会变得有趣。要运行服务器，你唯一需要安装的就是 Python（确切地说是Python 3.7+）。但要运行使用 Pyramid，Flask 和 Django 编写的应用程序，你需要先安装这些框架。让我们安装所有这三个。我首选的方法是使用 venv（默认情况下在 Python 3.3 及更高版本中可用）。只需按照以下步骤创建并激活虚拟环境，然后安装这三个 Web 框架。
 >译者注：先创建项目目录，再在目录中创建虚拟环境
 ```
 $ mkdir part2
@@ -178,7 +180,7 @@ $ cd part2
 ```
 $ python -m venv lsbaws
 ```
->译者注：不管你用什么方法创建虚拟环境，创建完毕之后还需要激活才能够进入这个虚拟环境。 要激活你的全新虚拟环境，需使用以下命令：（以下是 Microsoft Windows 命令提示符窗口）
+>译者注：不管你用什么方法创建虚拟环境，创建完毕之后还需要激活才能够进入这个虚拟环境。 要激活你的全新虚拟环境，需使用以下命令：（以下是 Microsoft Windows 10 命令提示符窗口）
 ```
 $ lsbaws\Scripts\activate
 (lsbaws) $ _
@@ -384,7 +386,7 @@ Web 框架使用来自该字典的信息来决定指定的路由、请求方法�
 
 这就是它的全部内容。你现在拥有一个可用的 WSGI 服务器，可以为使用 WSGI 兼容的 Web 框架（如 Django，Flask，Pyramid 或你自己的 WSGI 框架）编写的基本 Web 应用程序提供服务。最好的一点就是服务器可以与多个 Web 框架一起使用，而无需对服务器代码库进行任何更改。简直漂亮。
 
-在你继续之前，这是另一个你可以考虑一下的问题：“你如何让你的服务器一次处理多个请求？”
+在你继续之前，这是另一个你可以考虑一下的问题：“你如何让你的服务器一次处理多个客户端请求？”
 
 请继续关注，我将在 [Part 3](https://github.com/S-HuaBomb/Build-a-Web-Server-Translate/blob/master/%E7%BF%BB%E8%AF%91%EF%BC%9ALet's%20Build%20A%20Web%20Server.Part%203.md) 中向你展示完成它的一种方法。Cheers！
 
